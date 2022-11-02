@@ -1,8 +1,4 @@
-
-
-
-/* Randomly return either Rock/Paper/Scissors
-Should return the output before moving to next step*/
+/* Randomly return either Rock/Paper/Scissors*/
 
 let choices = ["Rock","Paper","Scissors"];
 
@@ -11,9 +7,6 @@ function getComputerChoice(items) {
 }
 
 let computerSelect= getComputerChoice(choices);  
-
-
-
 
 
 /*Play a single round. Take 2 parameters (playerSelection)
@@ -31,7 +24,6 @@ Return the result of calling this function, you need it later
     else if ....
 } */
 
-
 function playRound(playerSelection,computerSelection){
 
     playerSelection=playerSelection.toLowerCase()
@@ -39,130 +31,52 @@ function playRound(playerSelection,computerSelection){
 
     if ((playerSelection==="rock") && (computerSelection==="Scissors")){
         result="won";
-        resultDisplayer.textContent = 'You won this round';
         return result;
     }
 
     else if ((playerSelection==="rock") && (computerSelection==="Paper")){
         result="lost";
-        resultDisplayer.textContent = 'You lost this round';
-
         return result;
 
     }
 
     else if ((playerSelection==="rock") && (computerSelection==="Rock")){
         result="tie";
-        resultDisplayer.textContent = 'Tie';
-
         return result;
 
     }
 
     else if ((playerSelection==="paper") && (computerSelection==="Scissors")){
         result="lost";
-        resultDisplayer.textContent = 'You lost this round';
-
         return result;
     }
 
     else if ((playerSelection==="paper") && (computerSelection==="Rock")){
         result="won";
-        resultDisplayer.textContent = 'You won this round';
-
         return result;
     }
 
     else if ((playerSelection==="paper") && (computerSelection==="Paper")){
         result="tie";
-        resultDisplayer.textContent = 'Tie';
-
         return result;
     }
 
     else if ((playerSelection==="scissors") && (computerSelection==="Paper")){
         result="won";
-        resultDisplayer.textContent = 'You won this round!';
-
         return result;
     }
 
     else if ((playerSelection==="scissors") && (computerSelection==="Rock")){
         result="lost";
-        resultDisplayer.textContent = 'You lost this round';
-
         return result;
     }
 
     else if ((playerSelection==="scissors") && (computerSelection==="Scissors")){
         result="tie";
-        resultDisplayer.textContent = 'Tie';
-
         return result;
     }
+    
 }
-
-
-
-/*Call playRound function inside game() to play a SINGLE round game that keeps
-score and report winner or loser at the end*/
-
-/* 1.Get playerSelection from clickin each button!!!
-
-2.If player won, playerCount = playerCount++ (display you won round)
-    else = computerCount++ (display lost round)
-    
-4. 
-    */
-
-
-
-//NOT NEEDED AT STEP 2 OF REVISITING
-function game(){
-
-
-    let playerCount=0;
-    let computerCount=0;
-
-    function counter(value){
-        if (value == "won"){
-            playerCount++;
-            console.log("You won this round");
-        }
-        else if (value =="lost"){
-            computerCount++;
-            console.log("You lost this round");
-        }
-    }
-}
-
-    
-
-
-
-
-    //PLAY FIVE ROUNDS
-   /* for (let i=0; i<5; i++){
-        let playerChoice = prompt("Choose between paper, rock,scissors");
-        counter(playRound(playerChoice,computerSelect));
-    
-
-    if (playerCount>computerCount){
-        console.log("You won the match");
-    }
-    else{
-        console.log("You lost the match");
-    }
-
-    */
-
-/*No need to call it since we play just 1 round now
-game(); */
-
-
-/*Log result after each round + log final winner */
-
-
 
 
 
@@ -190,10 +104,56 @@ ScissorsButton.addEventListener("click", () =>{
 
 
 
+//DIV FOR DISPLAYING LAST ROUND RESULT
 
-//DIV FOR DISPLAYING RESULTS
+const roundResult = document.createElement('div');
+roundResult.classList.add('content');
+document.body.appendChild(roundResult);
 
-const resultDisplayer = document.createElement('div');
-resultDisplayer.classList.add('content');
 
-document.body.appendChild(resultDisplayer);
+//DIVS FOR DISPLAYING RUNNING SCORE
+
+const playerScore = document.createElement('div');
+playerScore.classList.add('content');
+document.body.appendChild(playerScore);
+
+const computerScore = document.createElement('div');
+computerScore.classList.add('content');
+document.body.appendChild(computerScore);
+
+
+
+
+//PLAY FIVE ROUNDS + DISPLAY RUNNING SCORE + ANNOUNCE WINNER OF A GAME
+
+
+
+
+    
+
+    function counter(value){
+
+        let playerCount=0;
+        let computerCount=0;
+        if (value == "won"){
+            playerCount++;
+            roundResult.textContent = 'You won this round';
+        }
+        else if (value =="lost"){
+            computerCount++;
+            roundResult.textContent ="You lost this round";
+        }
+    }
+
+
+
+    
+/*
+    if (playerCount>computerCount){
+        console.log("You won the match");
+    }
+    else{
+        console.log("You lost the match");
+    }
+
+    */
