@@ -31,49 +31,49 @@ function playRound(playerSelection,computerSelection){
 
     if ((playerSelection==="rock") && (computerSelection==="Scissors")){
         result="won";
-        return result;
+        counter(result);
     }
 
     else if ((playerSelection==="rock") && (computerSelection==="Paper")){
         result="lost";
-        return result;
+        counter(result);
 
     }
 
     else if ((playerSelection==="rock") && (computerSelection==="Rock")){
         result="tie";
-        return result;
+        counter(result);
 
     }
 
     else if ((playerSelection==="paper") && (computerSelection==="Scissors")){
         result="lost";
-        return result;
+        counter(result);
     }
 
     else if ((playerSelection==="paper") && (computerSelection==="Rock")){
         result="won";
-        return result;
+        counter(result);
     }
 
     else if ((playerSelection==="paper") && (computerSelection==="Paper")){
         result="tie";
-        return result;
+        counter(result);
     }
 
     else if ((playerSelection==="scissors") && (computerSelection==="Paper")){
         result="won";
-        return result;
+        counter(result);
     }
 
     else if ((playerSelection==="scissors") && (computerSelection==="Rock")){
         result="lost";
-        return result;
+        counter(result);
     }
 
     else if ((playerSelection==="scissors") && (computerSelection==="Scissors")){
         result="tie";
-        return result;
+        counter(result);
     }
     
 }
@@ -131,17 +131,27 @@ document.body.appendChild(computerScore);
 
     
 
-    function counter(value){
+function counter(value){
 
-        let playerCount=0;
-        let computerCount=0;
-        if (value == "won"){
+    let playerCount=0;
+    let computerCount=0;
+
+    if (value == "won"){
             playerCount++;
             roundResult.textContent = 'You won this round';
+            playerScore.textContent = `Player score =  ${playerCount} `
+            computerScore.textContent = `Computer score =  ${computerCount} `
         }
-        else if (value =="lost"){
+    else if (value =="lost"){
             computerCount++;
             roundResult.textContent ="You lost this round";
+            playerScore.textContent = `Player score =  ${playerCount} `
+            computerScore.textContent = `Computer score =  ${computerCount} `
+        }
+    else if (value =="lost"){
+            roundResult.textContent ="Tie";
+            playerScore.textContent = `Player score =  ${playerCount} `
+            computerScore.textContent = `Computer score =  ${computerCount} `
         }
     }
 
