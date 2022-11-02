@@ -1,12 +1,18 @@
 
+
+
 /* Randomly return either Rock/Paper/Scissors
 Should return the output before moving to next step*/
 
-let choices = ["Rock","Paper","Scissors"]
+let choices = ["Rock","Paper","Scissors"];
 
 function getComputerChoice(items) {
     return items[Math.floor(Math.random()*items.length)];
 }
+
+let computerSelect= getComputerChoice(choices);  
+
+
 
 
 
@@ -32,71 +38,78 @@ function playRound(playerSelection,computerSelection){
     let result="";
 
     if ((playerSelection==="rock") && (computerSelection==="Scissors")){
-        result="won"
+        result="won";
+        console.log(result);
         return result;
     }
 
     else if ((playerSelection==="rock") && (computerSelection==="Paper")){
-        result="lost"
+        result="lost";
+        console.log(result);
         return result;
+
     }
 
     else if ((playerSelection==="rock") && (computerSelection==="Rock")){
-        result="tie"
+        result="tie";
+        console.log(result);
         return result;
+
     }
 
     else if ((playerSelection==="paper") && (computerSelection==="Scissors")){
-        result="lost"
+        result="lost";
+        console.log(result);
         return result;
     }
 
     else if ((playerSelection==="paper") && (computerSelection==="Rock")){
-        result="won"
+        result="won";
+        console.log(result);
         return result;
     }
 
     else if ((playerSelection==="paper") && (computerSelection==="Paper")){
-        return ("Tie");
+        result="tie";
+        console.log(result);
+        return result;
     }
 
     else if ((playerSelection==="scissors") && (computerSelection==="Paper")){
-        result="won"
+        result="won";
+        console.log(result);
         return result;
     }
 
     else if ((playerSelection==="scissors") && (computerSelection==="Rock")){
-        result="lost"
+        result="lost";
+        console.log(result);
         return result;
     }
 
     else if ((playerSelection==="scissors") && (computerSelection==="Scissors")){
-        result="tie"
+        result="tie";
+        console.log(result);
         return result;
     }
 }
 
 
 
-/*Call playRound function inside game() to play a 5 round game that keeps
+/*Call playRound function inside game() to play a SINGLE round game that keeps
 score and report winner or loser at the end*/
 
-/*1.Call to play 5 round (for loop)
-
-1.5(prompt to get playerSelection)!!!
+/* 1.Get playerSelection from clickin each button!!!
 
 2.If player won, playerCount = playerCount++ (display you won round)
     else = computerCount++ (display lost round)
-
-
     
-4. After the 5 calls, check round count
-if playercount > computercount = return player  won
-else = return player lost
+4. 
     */
 
 
 
+//NOT NEEDED AT STEP 2 OF REVISITING
 function game(){
 
 
@@ -113,12 +126,18 @@ function game(){
             console.log("You lost this round");
         }
     }
+}
 
-    for (let i=0; i<5; i++){
+    
+
+
+
+
+    //PLAY FIVE ROUNDS
+   /* for (let i=0; i<5; i++){
         let playerChoice = prompt("Choose between paper, rock,scissors");
-        let computerSelect= getComputerChoice(choices);  
         counter(playRound(playerChoice,computerSelect));
-    }
+    
 
     if (playerCount>computerCount){
         console.log("You won the match");
@@ -127,9 +146,10 @@ function game(){
         console.log("You lost the match");
     }
 
-}
+    */
 
-game();
+/*No need to call it since we play just 1 round now
+game(); */
 
 
 /*Log result after each round + log final winner */
@@ -138,4 +158,34 @@ game();
 
 
 
+//USER INTERFACE
 
+//PLAY SINGLE ROUND WHEN YOU CLICK A BUTTON and log result
+
+
+let RockButton = document.getElementById('buttonRock');
+
+RockButton.addEventListener("click", () =>{
+    playRound("rock",computerSelect)});
+
+    
+let PaperButton = document.getElementById('buttonPaper');
+
+PaperButton.addEventListener("click", () =>{
+    playRound("paper",computerSelect)});   
+
+    
+let ScissorsButton = document.getElementById('buttonScissors');
+
+ScissorsButton.addEventListener("click", () =>{
+    playRound("scissors",computerSelect)});
+
+
+
+
+//DIV FOR DISPLAYING RESULTS
+
+const resultDisplayer = document.createElement('div');
+resultDisplayer.classList.add('content');
+
+document.body.appendChild(resultDisplayer);
