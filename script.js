@@ -39,57 +39,65 @@ function playRound(playerSelection,computerSelection){
 
     if ((playerSelection==="rock") && (computerSelection==="Scissors")){
         result="won";
-        console.log(result);
+        resultDisplayer.textContent = 'You won this round';
         return result;
     }
 
     else if ((playerSelection==="rock") && (computerSelection==="Paper")){
         result="lost";
-        console.log(result);
+        resultDisplayer.textContent = 'You lost this round';
+
         return result;
 
     }
 
     else if ((playerSelection==="rock") && (computerSelection==="Rock")){
         result="tie";
-        console.log(result);
+        resultDisplayer.textContent = 'Tie';
+
         return result;
 
     }
 
     else if ((playerSelection==="paper") && (computerSelection==="Scissors")){
         result="lost";
-        console.log(result);
+        resultDisplayer.textContent = 'You lost this round';
+
         return result;
     }
 
     else if ((playerSelection==="paper") && (computerSelection==="Rock")){
         result="won";
-        console.log(result);
+        resultDisplayer.textContent = 'You won this round';
+
         return result;
     }
 
     else if ((playerSelection==="paper") && (computerSelection==="Paper")){
         result="tie";
-        console.log(result);
+        resultDisplayer.textContent = 'Tie';
+
         return result;
     }
 
     else if ((playerSelection==="scissors") && (computerSelection==="Paper")){
         result="won";
-        console.log(result);
+        resultDisplayer.textContent = 'You won this round!';
+
         return result;
     }
 
     else if ((playerSelection==="scissors") && (computerSelection==="Rock")){
         result="lost";
-        console.log(result);
+        resultDisplayer.textContent = 'You lost this round';
+
         return result;
     }
 
     else if ((playerSelection==="scissors") && (computerSelection==="Scissors")){
         result="tie";
-        console.log(result);
+        resultDisplayer.textContent = 'Tie';
+
         return result;
     }
 }
