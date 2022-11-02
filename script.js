@@ -6,7 +6,6 @@ function getComputerChoice(items) {
     return items[Math.floor(Math.random()*items.length)];
 }
 
-let computerSelect= getComputerChoice(choices);  
 
 
 /*Play a single round. Take 2 parameters (playerSelection)
@@ -88,19 +87,19 @@ function playRound(playerSelection,computerSelection){
 let RockButton = document.getElementById('buttonRock');
 
 RockButton.addEventListener("click", () =>{
-    playRound("rock",computerSelect)});
+    playRound("rock",getComputerChoice(choices))});
 
     
 let PaperButton = document.getElementById('buttonPaper');
 
 PaperButton.addEventListener("click", () =>{
-    playRound("paper",computerSelect)});   
+    playRound("paper",getComputerChoice(choices))});   
 
     
 let ScissorsButton = document.getElementById('buttonScissors');
 
 ScissorsButton.addEventListener("click", () =>{
-    playRound("scissors",computerSelect)});
+    playRound("scissors",getComputerChoice(choices))});
 
 
 
@@ -122,48 +121,59 @@ computerScore.classList.add('content');
 document.body.appendChild(computerScore);
 
 
+//DIV FOR DISPLAYING FINAL RESULT
+
+const finalResult = document.createElement('div');
+finalResult.classList.add('content');
+document.body.appendChild(finalResult);
 
 
-//PLAY FIVE ROUNDS + DISPLAY RUNNING SCORE + ANNOUNCE WINNER OF A GAME
 
+//DISPLAY/UPDATE RUNNING SCORE + ANNOUNCE WINNER AFTER 5 points
 
+function checkWinner(playerScore,computerScore){
+    if (playerScore>computerScore && playerScore===5){
+        finalResult.textContent ="You won the match";
+        }
+    else if (playerScore<computerScore && computerScore===5){
+        finalResult.textContent ="You lost the match";
+        }
+}
 
-
-    
+let playerCount=0;
+let computerCount=0; 
 
 function counter(value){
-
-    let playerCount=0;
-    let computerCount=0;
 
     if (value == "won"){
             playerCount++;
             roundResult.textContent = 'You won this round';
             playerScore.textContent = `Player score =  ${playerCount} `
             computerScore.textContent = `Computer score =  ${computerCount} `
+            checkWinner(playerCount,computerCount);
         }
     else if (value =="lost"){
             computerCount++;
             roundResult.textContent ="You lost this round";
-            playerScore.textContent = `Player score =  ${playerCount} `
-            computerScore.textContent = `Computer score =  ${computerCount} `
+            playerScore.textContent = `Player score =  ${playerCount} `;
+            computerScore.textContent = `Computer score =  ${computerCount} `;
+            checkWinner(playerCount,computerCount);
+
         }
-    else if (value =="lost"){
+    else if (value =="tie"){
             roundResult.textContent ="Tie";
-            playerScore.textContent = `Player score =  ${playerCount} `
-            computerScore.textContent = `Computer score =  ${computerCount} `
+            playerScore.textContent = `Player score =  ${playerCount} `;
+            computerScore.textContent = `Computer score =  ${computerCount} `;
+            checkWinner(playerCount,computerCount);
+
         }
+
     }
 
 
+
+
+
+  
 
     
-/*
-    if (playerCount>computerCount){
-        console.log("You won the match");
-    }
-    else{
-        console.log("You lost the match");
-    }
-
-    */
